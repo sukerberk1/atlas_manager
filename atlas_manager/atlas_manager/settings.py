@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     "core",
     "clients",
-    "projects"
+    "projects",
 ]
 
 MIDDLEWARE = [

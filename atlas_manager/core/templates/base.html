@@ -1,14 +1,27 @@
 {% load component_tags %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atlas Client Management System</title>
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "css/main.css" %}"/>
+    
+    {% block head %} {% endblock head %}
+
     {% component_css_dependencies %}
 </head>
 <body>
-
+    
+    <main>
+    {% block main %}
+    
+    {% endblock main %}
+    </main>
 
     {% component_js_dependencies %}
 </body>

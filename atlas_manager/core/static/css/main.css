@@ -1,0 +1,36 @@
+:root {
+    --primaryColor: rgba(55,181,253);
+    --primaryColorDark: rgba(35,161,233);
+    --secondaryColor: rgb(53, 88, 196);
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/OpenSans.ttf);
+}
+body {
+    font-family: "Open Sans";
+    background-color: aliceblue;
+    margin: 0;
+    box-sizing: border-box;
+}
+.main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.button-primary {
+    padding:1.5rem 2rem;
+    background-color: var(--primaryColor);
+    box-shadow: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: 200ms;
+}
+.button-primary:hover {
+    background-color: var(--primaryColorDark);
+}
