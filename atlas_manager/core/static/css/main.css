@@ -14,21 +14,3 @@ body {
     margin: 0;
     box-sizing: border-box;
 }
-.main-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.button-primary {
-    padding:1.5rem 2rem;
-    background-color: var(--primaryColor);
-    box-shadow: none;
-    text-transform: uppercase;
-    color: white;
-    font-weight: 600;
-    border: none;
-    transition: 200ms;
-}
-.button-primary:hover {
-    background-color: var(--primaryColorDark);
-}

@@ -1,0 +1,13 @@
+a.nav-element {
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: var(--primaryColorDark);
+    padding: 1rem;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.3);
+    transition: 200ms;
+}
+a.nav-element:hover {
+    transform: translate(-2px, -2px);
+    background-color: var(--primaryColor);
+}

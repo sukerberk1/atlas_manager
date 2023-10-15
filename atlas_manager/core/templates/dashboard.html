@@ -1,1 +1,30 @@
 {% extends "base.html" %}
+
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/dashboard.css" %}"/>
+{% endblock head %}
+
+{% block body %}
+
+<div class="container-fluid">
+    
+    <nav 
+    hx-boost="true" 
+    hx-push-url="true"
+    hx-target="#main"
+    >
+        {% component "nav_element" title="Clients" %}
+        {% component "nav_element" title="Projects" %}
+        {% component "nav_element" title="Tasks" %}
+    </nav>
+
+
+
+
+    <main id="main">
+
+    </main>
+</div>
+
+{% endblock body %}
