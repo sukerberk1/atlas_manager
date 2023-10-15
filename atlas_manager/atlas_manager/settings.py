@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!f1nct%m72hl49w7%)o6v)#$+yzynf2lx3i-6i8gsp121a1on4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "core.context_processors.development_mode"
             ],
             'loaders':[(
                 'django.template.loaders.cached.Loader', [
@@ -122,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'pl'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 

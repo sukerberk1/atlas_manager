@@ -15,14 +15,10 @@
 
     {% component_css_dependencies %}
 </head>
-<body>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    {% block body %}
     
-    <main>
-    {% block main %}
-    
-    {% endblock main %}
-    </main>
-
+    {% endblock body %}
     {% component_js_dependencies %}
 </body>
 </html>

@@ -5,23 +5,34 @@
 <link rel="stylesheet" href="{% static "css/landing.css" %}"/>
 {% endblock head %}
 
-{% block main %}
-<div class="container-hero" >
+{% block body %}
+<div class="container-hero">
     <div 
     class="image-overlay"
     style="background-image: url('{% static "img/background.jpg" %}')"
     >
     </div>
-    <div class="main-box" hx-boost="true" hx-target="this">
+    <div class="main-box">
         <div class="hero-header">
             <h1>Feeling left alone with your<br/> freelance business?</h1>
-            <p>Make your life easier with Atlas Manager - an open-source Client Management System made by freelancers for freelancers.
+            <p>Make your life easier with Atlas Manager - an open-source client manager made by freelancers for freelancers.
         </div>
-        <a href="/login">
+        
+        {# This should be changed - for current purposes let's omit authentication #}
+        {% if  development_mode  %}
+        <a href="{% url "dashboard" %}">
+            <button class="button-primary">
+                Go to dashboard
+            </button>
+        </a>
+        {% else %}
+        <a>
             <button class="button-primary">
                 Try it out
             </button>
         </a>
+        {% endif %}
+
     </div>
 </div>
-{% endblock main %}
+{% endblock body %}
