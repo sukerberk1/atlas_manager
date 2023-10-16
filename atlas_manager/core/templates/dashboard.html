@@ -1,29 +1,39 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% block head %}
-    <link rel="stylesheet" href="{% static "css/dashboard.css" %}"/>
-{% endblock head %}
 
 {% block body %}
 
-<div class="container-fluid">
-    
+<div class="grid grid-cols-5">
     <nav 
     hx-boost="true" 
     hx-push-url="true"
     hx-target="#main"
+    class="p-4 flex flex-col gap-4"
     >
-        {% component "nav_element" title="Clients" %}
+    <div class="flex items-baseline gap-2">
+        <img 
+        src="{% static "img/atlas.jpg" %}"
+        alt="logo"
+        class="w-16"
+        />
+        <h1 class="font-semibold text-lg">
+            Atlas Client Manager
+        </h1>
+    </div>
+
+        {% component "nav_element" title="Clients"%}
         {% component "nav_element" title="Projects" %}
         {% component "nav_element" title="Tasks" %}
     </nav>
 
 
 
-
     <main id="main">
-
+        <div class="content-placeholder">
+            <h1>Here goes the content...</h1>
+            <p>Pick an option from the menu</p>
+        </div>
     </main>
 </div>
 
