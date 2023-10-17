@@ -1,21 +1,20 @@
 {% load static %}
 <div class="bg-white mb-6 shadow min-h-1 rounded-md flex justify-between">
-        <form class="flex gap-2 items-center">
+        <form class="flex gap-1 items-center">
             <input 
-            type="text" 
+            type="text"
+            name="search"
             placeholder="Search for a project..."
             class="m-2 p-1 border border-sky-200 rounded-md"
+            hx-post="{% url "get_projects" %}"
+            hx-target="#search-results" 
+            hx-trigger="keyup changed delay:200ms, search" 
             />
-            <a
-            href="/"
-            class="p-3 hover:bg-sky-200 rounded-md transition"
-            >
-                <img
-                src="{% static "icons/search.png" %}"
-                alt="search"
-                class="w-4"
-                />
-            </a>
+            <img
+            src="{% static "icons/search.png" %}"
+            alt="search"
+            class="w-4"
+            />
         </form>
         <div class="flex gap-2 mr-3 items-center">
             <div class="p-3 bg-sky-50 hover:bg-sky-200 rounded-md transition flex gap-2">

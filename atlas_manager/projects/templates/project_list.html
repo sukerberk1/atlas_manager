@@ -1,0 +1,7 @@
+{% if projects %}
+    {% for p in projects %}
+    {% component "project_tile" project=p %}
+    {% endfor %}
+{% else %}
+    {% include "no_results.html" %}
+{% endif %}

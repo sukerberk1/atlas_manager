@@ -1,13 +1,11 @@
 {% component "project_toolbox" %}
-{% if project_list %}
-    <div class="flex gap-6 wrap">
-    {% for p in project_list %}
-        {% component "project_tile" project=p %}
-    {% endfor %}
 
-    </div>
-{% else %}
+<div
+id="search-results"
+class="flex gap-6 wrap"
+hx-get="{% url "get_projects" %}"
+hx-trigger="load"
+hx-target="this"
+>
 
-{% include "no_results.html" %}
-
-{% endif %}
+</div>

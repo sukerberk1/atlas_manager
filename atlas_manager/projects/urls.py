@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import AllProjectsView
+from .views import ProjectsTemplateView, ProjectsListView
 
 urlpatterns = [
-    path("", AllProjectsView.as_view(), name="projects")
+    path("template/", ProjectsTemplateView.as_view(), name="projects"),
+    path("", ProjectsListView.as_view(), name="get_projects"),
 ]
