@@ -1,4 +1,22 @@
-<div class="p-4 bg-white rounded-md shadow-md ">
+{% load static %}
+<div class="p-4 bg-white rounded-md shadow-md basis-72 border-b-4 border-[{{p.get_color_hex}}] relative">
+    <a 
+    href="/"
+    class="absolute invert-[.45] top-4 right-4 w-4 hover:invert-0 hover:translate-x-0.5 transition"
+    >
+        <img
+        src="{% static "icons/fast-forward.png" %}"
+        alt="go"
+        />
+    </a>
+
     <h1 class="font-semibold text-lg">{{p.name}}</h1>
-    <p>{{p.get_color_hex}}</p>
+    <p>
+        Client: 
+        {% if p.client %}
+        {{p.client.first_name}} {{p.client.last_name}}
+        {% else %}
+        No client assigned
+        {% endif %}
+    </p>
 </div>

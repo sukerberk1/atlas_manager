@@ -4,17 +4,16 @@
 {% block body %}
 {% component "navbar" %}
 <div class="container mx-auto p-6" id="container">
-    <div class="mt-36 flex flex-col items-center gap-4">
-        <img
-        src="{% static "icons/empty.png" %}"
-        class="w-36"
-        />
-        <h1 class="font-semibold text-xl text-center">
-            Seems like it's nothing here...
-        </h1>
-        <p>
-            Fill this page by picking one of the options
-        </p>
-    </div>
+    {% block container %}
+        {% comment %}
+        Lazy load the projects tab
+        {% endcomment %}
+        <a
+        hx-get="{% url "projects" %}"
+        hx-target="#container"
+        hx-trigger="load"
+        >
+        </a>
+    {% endblock container %}
 </div>
 {% endblock body %}

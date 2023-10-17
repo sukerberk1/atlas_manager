@@ -1,5 +1,13 @@
-<div class="flex gap-6 wrap">
-{% for p in project_list %}
-    {% component "project_tile" project=p %}
-{% endfor %}
-</div>
+{% component "project_toolbox" %}
+{% if project_list %}
+    <div class="flex gap-6 wrap">
+    {% for p in project_list %}
+        {% component "project_tile" project=p %}
+    {% endfor %}
+
+    </div>
+{% else %}
+
+{% include "no_results.html" %}
+
+{% endif %}

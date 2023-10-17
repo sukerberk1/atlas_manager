@@ -1,0 +1,42 @@
+{% load static %}
+<div class="bg-white mb-6 shadow min-h-1 rounded-md flex justify-between">
+        <form class="flex gap-2 items-center">
+            <input 
+            type="text" 
+            placeholder="Search for a project..."
+            class="m-2 p-1 border border-sky-200 rounded-md"
+            />
+            <a
+            href="/"
+            class="p-3 hover:bg-sky-200 rounded-md transition"
+            >
+                <img
+                src="{% static "icons/search.png" %}"
+                alt="search"
+                class="w-4"
+                />
+            </a>
+        </form>
+        <div class="flex gap-2 mr-3 items-center">
+            <div class="p-3 bg-sky-50 hover:bg-sky-200 rounded-md transition flex gap-2">
+                <img
+                src="{% static "icons/add.png" %}"
+                alt="add"
+                class="w-4"
+                />
+                <p class="text-xs">
+                    Add a project
+                </p>
+            </div>
+            <div class="p-3 bg-sky-50 hover:bg-sky-200 rounded-md transition flex gap-2">
+                <img
+                src="{% static "icons/group.png" %}"
+                alt="group"
+                class="w-4"
+                />
+                <p class="text-xs">
+                    Add a group
+                </p>
+            </div>
+        </div>
+</div>

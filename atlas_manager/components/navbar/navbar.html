@@ -3,8 +3,7 @@
 class="p-4 bg-white shadow flex flex-row gap-6"
 >
     <!-- LOGO BOX -->
-    <a
-    href="{% url "dashboard" %}"
+    <div
     class="flex gap-4 items-center"
     >
         <img 
@@ -15,29 +14,31 @@ class="p-4 bg-white shadow flex flex-row gap-6"
         <h1 class="font-semibold text-2xl">
             Atlas Client Manager
         </h1>
-    </a>
+    </div>
     <!-- NAV BOX -->
     <div
+    {% comment %} 
     hx-boost="true"
     hx-push-url="true"
+    {% endcomment %}
     hx-target="#container"
     class="flex gap-4 items-center"
     >
         <a 
         class="hover:text-sky-700"
-        href="{% url "projects" %}"
+        hx-get="{% url "projects" %}"
         >
             Projects View
         </a>
         <a 
         class="hover:text-sky-700"
-        href=""
+        hx-get="/"
         >
             Clients View
         </a>
         <a 
         class="hover:text-sky-700"
-        href=""
+        hx-get="/"
         >
             Tasks View
         </a>
