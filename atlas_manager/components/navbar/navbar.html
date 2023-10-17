@@ -5,12 +5,12 @@ class="p-4 bg-white shadow flex flex-row gap-6"
     <!-- LOGO BOX -->
     <a
     href="{% url "dashboard" %}"
-    class="flex gap-2 items-center"
+    class="flex gap-4 items-center"
     >
         <img 
         src="{% static 'img/atlas.jpg' %}"
         alt="logo"
-        class="w-12"
+        class="w-12 rounded-md"
         />
         <h1 class="font-semibold text-2xl">
             Atlas Client Manager
@@ -25,7 +25,7 @@ class="p-4 bg-white shadow flex flex-row gap-6"
     >
         <a 
         class="hover:text-sky-700"
-        href=""
+        href="{% url "projects" %}"
         >
             Projects View
         </a>

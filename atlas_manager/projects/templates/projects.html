@@ -1,0 +1,5 @@
+<div class="flex gap-6 wrap">
+{% for p in project_list %}
+    {% component "project_tile" project=p %}
+{% endfor %}
+</div>
