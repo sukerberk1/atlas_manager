@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Client Management System</title>
+    <title>Atlas Client Manager</title>
     <!-- htmx -->
     <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
     <!-- tailwind -->
@@ -14,7 +14,9 @@
 
     <link rel="stylesheet" href="{% static "css/main.css" %}"/>
     
-    {% block head %} {% endblock head %}
+    {% block head %} 
+    <!-- Additional links e.g. page-specific styles go into this block -->
+    {% endblock head %}
 
     {% component_css_dependencies %}
 </head>

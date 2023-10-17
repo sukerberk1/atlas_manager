@@ -1,40 +1,20 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block body %}
-
-<div class="grid grid-cols-5">
-    <nav 
-    hx-boost="true" 
-    hx-push-url="true"
-    hx-target="#main"
-    class="p-4 flex flex-col gap-4"
-    >
-    <div class="flex items-baseline gap-2">
-        <img 
-        src="{% static "img/atlas.jpg" %}"
-        alt="logo"
-        class="w-16"
+{% component "navbar" %}
+<div class="container mx-auto" id="container">
+    <div class="mt-36 flex flex-col items-center gap-4">
+        <img
+        src="{% static "icons/empty.png" %}"
+        class="w-36"
         />
-        <h1 class="font-semibold text-lg">
-            Atlas Client Manager
+        <h1 class="font-semibold text-xl text-center">
+            Seems like it's nothing here...
         </h1>
+        <p>
+            Fill this page by picking one of the options
+        </p>
     </div>
-
-        {% component "nav_element" title="Clients"%}
-        {% component "nav_element" title="Projects" %}
-        {% component "nav_element" title="Tasks" %}
-    </nav>
-
-
-
-    <main id="main">
-        <div class="content-placeholder">
-            <h1>Here goes the content...</h1>
-            <p>Pick an option from the menu</p>
-        </div>
-    </main>
 </div>
-
 {% endblock body %}

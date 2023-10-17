@@ -1,0 +1,45 @@
+{% load static %}
+<nav
+class="p-4 bg-white shadow flex flex-row gap-6"
+>
+    <!-- LOGO BOX -->
+    <a
+    href="{% url "dashboard" %}"
+    class="flex gap-2 items-center"
+    >
+        <img 
+        src="{% static 'img/atlas.jpg' %}"
+        alt="logo"
+        class="w-12"
+        />
+        <h1 class="font-semibold text-2xl">
+            Atlas Client Manager
+        </h1>
+    </a>
+    <!-- NAV BOX -->
+    <div
+    hx-boost="true"
+    hx-push-url="true"
+    hx-target="#container"
+    class="flex gap-4 items-center"
+    >
+        <a 
+        class="hover:text-sky-700"
+        href=""
+        >
+            Projects View
+        </a>
+        <a 
+        class="hover:text-sky-700"
+        href=""
+        >
+            Clients View
+        </a>
+        <a 
+        class="hover:text-sky-700"
+        href=""
+        >
+            Tasks View
+        </a>
+    </div>
+</nav>
