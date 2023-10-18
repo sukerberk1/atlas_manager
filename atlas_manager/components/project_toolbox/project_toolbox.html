@@ -15,6 +15,21 @@
             alt="search"
             class="w-4"
             />
+            <div
+            id="group-filter"
+            class="ml-4 p-3 bg-sky-50 hover:bg-sky-200 rounded-md transition flex gap-2"
+            hx-get="{% url "project_groups" %}"
+            hx-swap="outerHTML"
+            >
+                <img
+                src="{% static "icons/filter.png" %}"
+                alt="filter"
+                class="w-4"
+                />
+                <p class="text-xs">
+                    Filter by group
+                </p>
+            </div>
         </form>
         <div class="flex gap-2 mr-3 items-center">
             <div class="p-3 bg-sky-50 hover:bg-sky-200 rounded-md transition flex gap-2">

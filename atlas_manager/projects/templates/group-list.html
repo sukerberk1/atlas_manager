@@ -1,0 +1,9 @@
+{% for g in project_groups %}
+
+    {% component "project_group_tile" group=g %}
+
+{% empty %}
+    <p class="font-semibold text-xs">
+        No groups available
+    </p>
+{% endfor %}
