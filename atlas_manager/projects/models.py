@@ -5,11 +5,12 @@ from clients.models import Client
 
 #TODO: Add validator for rgb values
 class ProjectColorGroup(models.Model):
+    name = models.CharField(max_length=127, unique=True)
     red = models.SmallIntegerField(default=255)
     green = models.SmallIntegerField(default=255)
     blue = models.SmallIntegerField(default=255)
 
-    def __str__(self) -> str:
+    def get_color_hex(self):
         r = f"{self.red:x}"
         g = f"{self.green:x}"
         b = f"{self.blue:x}"
@@ -21,6 +22,10 @@ class ProjectColorGroup(models.Model):
             b = "0" + b
         return "#"+r+g+b
 
+    def __str__(self) -> str:
+        return self.name + " " + self.get_color_hex()
+
+
 class Project(models.Model):
     name = models.CharField(max_length=255)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="projects", null=True, blank=True)
@@ -30,7 +35,7 @@ class Project(models.Model):
     def get_color_hex(self):
         if self.group is None:
             return "#ffffff"
-        return str(self.group)
+        return self.group.get_color_hex()
     
     def __str__(self) -> str:
         if self.client is None:
