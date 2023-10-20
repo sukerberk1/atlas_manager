@@ -72,7 +72,6 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / "templates"
         ],
-        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -98,7 +97,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'atlas_manager.wsgi.application'
 
 
-# Django-allauth
+# AUTHENTICATION & DJANGO-ALLAUTH
+
+LOGIN_REDIRECT_URL = "/dashboard"
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -118,7 +119,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': '',
             'secret': '',
-            'key': ''
+            'key': '',
+            'EMAIL_AUTHENTICATION': True
         }
     }
 }
