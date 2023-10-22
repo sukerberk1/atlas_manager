@@ -1,0 +1,17 @@
+{% extends "account/account_base.html" %}
+{% load i18n %}
+
+{% block box %}
+
+    <h1 class="text-xl font-bold">
+        {% trans "Social Network Login Failure" %}
+    </h1>
+    <p class="mt-4">{% trans "An error occurred while attempting to login via your social network account." %}</p>
+    <a 
+    href="{% url "account_login" %}"
+    class="underline text-sky-700 transition hover:text-black"
+    >
+        Go back to the login screen
+    </a>
+
+{% endblock box %}
