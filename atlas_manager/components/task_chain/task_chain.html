@@ -1,0 +1,5 @@
+{{task.title}}
+
+{% if task.next %}
+    {% component "task_chain" task=task.next %}
+{% endif %}
