@@ -1,0 +1,58 @@
+{% extends "account/account_base.html" %}
+
+{% block box %}
+<h1 class="text-xl font-bold">
+    Log in
+</h1>
+<p>Log into an existing account</p>
+<form 
+method="POST"
+class="flex flex-col gap-4 my-4"
+>
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="flex flex-col md:flex-row justify-between gap-4">
+            {{field.label}}
+            {{field}}
+        </div>
+        {% if field.errors %}
+            <p class="text-red-700 text-sm">{{field.errors}}</p>    
+        {% endif %}
+        
+    {% endfor %}
+
+    {% comment %} 
+    THIS LOOP ALWAYS PRODUCES A PARAGRAPH "__all__"
+    {% for error in form.errors %}
+        <p class="text-red-700 text-sm">{{error}}</p>   
+    {% endfor %} 
+    {% endcomment %}
+    
+    {% for error in form.non_field_errors %}
+        <p class="text-red-700 text-sm">{{error}}</p>   
+    {% endfor %}
+
+    <button 
+    class="
+    py-1 px-2 bg-sky-200 shadow rounded-md 
+    transition hover:-translate-y-0.5
+    ">
+        Log in
+    </button>
+</form>
+<p> or
+<div class="flex flex-col gap-2 my-2">    
+    <a 
+    href="{% url "account_signup" %}"
+    class="py-1 bg-sky-50 shadow rounded-md"
+    >
+        create an account
+    </a>
+    <a 
+    href="{% url "google_login" %}"
+    class="py-1 bg-sky-50 shadow rounded-md"
+    >
+        sign in using Google
+    </a>
+</div>
+{% endblock box %}

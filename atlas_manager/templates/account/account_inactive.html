@@ -1,0 +1,12 @@
+{% extends "allauth/account_base.html" %}
+{% load i18n %}
+
+
+{% block box %}
+    <h1 class="font-bold text-xl">
+        {% trans "Account Inactive" %}
+    </h1>
+    <p>
+        {% trans "This account is inactive." %}
+    </p>
+{% endblock box %}

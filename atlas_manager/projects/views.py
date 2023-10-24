@@ -1,16 +1,17 @@
 from typing import Any
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, TemplateView
 from .models import Project, ProjectColorGroup
 
 # Create your views here.
 
-class ProjectsTemplateView(TemplateView):
+class ProjectsTemplateView(LoginRequiredMixin, TemplateView):
     template_name="projects.html"
 
 
-class ProjectsListView(ListView):
+class ProjectsListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = "project_list.html"
     context_object_name = "projects"
@@ -35,11 +36,11 @@ class ProjectsListView(ListView):
         return super().get(request, *args, **kwargs)
 
 
-class ProjectGroupTemplateView(TemplateView):
+class ProjectGroupTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "groups.html"
 
 
-class ProjectGroupListView(ListView):
+class ProjectGroupListView(LoginRequiredMixin, ListView):
     model = ProjectColorGroup
     template_name = "group-list.html"
     context_object_name = "project_groups"

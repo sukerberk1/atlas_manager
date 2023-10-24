@@ -1,9 +1,16 @@
-{% for g in project_groups %}
+{% if project_groups %}
+
+    {% comment %} A tile that cancels the filter {% endcomment %}
+    {% component "project_group_tile" group=project_groups.0 cancel="true" %}
+
+    {% for g in project_groups %}
 
     {% component "project_group_tile" group=g %}
 
-{% empty %}
-    <p class="font-semibold text-xs">
-        No groups available
-    </p>
-{% endfor %}
+    {% endfor %}
+    
+{% else %}
+<p class="font-semibold text-xs">
+    No groups available
+</p>
+{% endif %}

@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     "django_components",
     "django_components.safer_staticfiles",
 
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
     "core",
     "clients",
     "projects",
@@ -54,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'atlas_manager.urls'
@@ -64,7 +72,6 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / "templates"
         ],
-        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -89,6 +96,34 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'atlas_manager.wsgi.application'
 
+
+# AUTHENTICATION & DJANGO-ALLAUTH
+
+LOGIN_REDIRECT_URL = "/dashboard"
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '',
+            'secret': '',
+            'key': '',
+            'EMAIL_AUTHENTICATION': True
+        }
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

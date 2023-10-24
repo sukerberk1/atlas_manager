@@ -7,6 +7,8 @@ class ProjectGroupTile(component.Component):
     template_name = "project_group_tile/project_group_tile.html"
     
     def get_context_data(self, group: ProjectColorGroup, *args, **kwargs) -> Dict[str, Any]:
+        if "cancel" in kwargs:
+            group = ProjectColorGroup()
         return {
             "group": group
         }
