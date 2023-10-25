@@ -18,7 +18,8 @@ class TasksTemplateView(LoginRequiredMixin, TemplateView):
         project_tasks = []
         for p in user_projects:
             tasks = p.tasks.filter(prev=None)
-            project_tasks.append(tasks)
+            if tasks.count() > 0:
+                project_tasks.append(tasks)
         context["project_tasks"] = project_tasks
         return context
 
