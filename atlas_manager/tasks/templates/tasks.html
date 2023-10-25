@@ -1,5 +1,7 @@
 {% load i18n %}
 {% load static %}
+<div class="flex gap-4">
+<div class="grow">
 {% for task_list in project_tasks %}
     {% if task_list %}
 
@@ -15,9 +17,9 @@
                 </h1>
                 <a
                 href="/"
-                class="text-sky-700 text-sm flex gap-2 group p-4 rounded-md transition hover:bg-sky-50 hover:shadow-inner"
+                class="text-sm flex items-center gap-2 group p-4 rounded-md transition hover:bg-sky-50"
                 >
-                    <span class="group-hover:text-sky-600">
+                    <span class="hidden md:inline group-hover:text-sky-600">
                         {% blocktrans %}Go to project{% endblocktrans %}
                     </span>
                     <img
@@ -34,7 +36,7 @@
             {% endblocktrans %}
             {% comment %} CREATE A TASK CHAIN FOR EACH CHAIN{% endcomment %}
             {% for chain_head in task_list %}
-            <div class="flex my-4">
+            <div class="flex my-8">
                 {% component "task_chain" task=chain_head %}
             </div>
             {% endfor %}
@@ -43,3 +45,9 @@
         {% endwith %}
     {% endif %}
 {% endfor %}
+</div>
+<div
+id="task-box"
+>
+</div>
+</div>

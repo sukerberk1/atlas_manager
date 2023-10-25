@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, DetailView
 from projects.models import Project
 from tasks.models import Task
 
@@ -17,3 +17,9 @@ class TasksTemplateView(TemplateView):
             project_tasks.append(tasks)
         context["project_tasks"] = project_tasks
         return context
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = "task_detail.html"
+    context_object_name = "task"
+    

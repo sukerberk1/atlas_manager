@@ -1,16 +1,30 @@
 {% load static %}
-<a href="/"
-class="p-4 flex justify-between items-center rounded-md
-group hover:bg-sky-50 transition hover:shadow-md"
+<a 
+hx-get="{% url "task_detail" task.id %}"
+hx-target="#task-box"
+hx-swap="outerHTML"
+class="p-4 flex justify-between items-center rounded-md cursor-default
+{% if not task.done %}
+group hover:bg-sky-50 transition hover:shadow-md cursor-pointer
+{% endif %}
+"
 >
     <h1 class="text-xl font-semibold">
         {{task.title}}
     </h1>
+    {% if task.done %}
+    <img
+    src="{% static "icons/checked.png" %}"
+    alt="done"
+    class="w-8 ml-4"
+    />
+    {% else %}
     <img
     src="{% static "icons/forward.png" %}"
     alt="forward"
     class="w-8 ml-4 transition group-hover:rotate-180"
     />
+    {% endif %}
 </a>
 
 {% if task.next %}
