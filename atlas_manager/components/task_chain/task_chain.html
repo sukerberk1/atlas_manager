@@ -1,4 +1,17 @@
-{{task.title}}
+{% load static %}
+<a href="/"
+class="p-4 flex justify-between items-center rounded-md
+group hover:bg-sky-50 transition hover:shadow-md"
+>
+    <h1 class="text-xl font-semibold">
+        {{task.title}}
+    </h1>
+    <img
+    src="{% static "icons/forward.png" %}"
+    alt="forward"
+    class="w-8 ml-4 transition group-hover:rotate-180"
+    />
+</a>
 
 {% if task.next %}
     {% component "task_chain" task=task.next %}

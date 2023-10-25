@@ -10,5 +10,10 @@ class TasksTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tasks"] = Task.objects.filter(project__author=self.request.user).filter(prev=None)
+        user_projects = Project.objects.filter(author=self.request.user)
+        project_tasks = []
+        for p in user_projects:
+            tasks = p.tasks.filter(prev=None)
+            project_tasks.append(tasks)
+        context["project_tasks"] = project_tasks
         return context

@@ -1,5 +1,45 @@
-{% for t in tasks %}
-    {% component "task_chain" task=t %}
+{% load i18n %}
+{% load static %}
+{% for task_list in project_tasks %}
+    {% if task_list %}
 
-    a
+        {% with task_list.0.project as project %}
+
+        <div 
+        class="bg-white rounded-md p-8 shadow-md my-8
+        border-b-4 border-[{{project.get_color_hex}}]"
+        >
+            <div class="flex justify-between items-center">
+                <h1 class="font-bold text-2xl">
+                    {{project.name}}
+                </h1>
+                <a
+                href="/"
+                class="text-sky-700 text-sm flex gap-2 group p-4 rounded-md transition hover:bg-sky-50 hover:shadow-inner"
+                >
+                    <span class="group-hover:text-sky-600">
+                        {% blocktrans %}Go to project{% endblocktrans %}
+                    </span>
+                    <img
+                    src="{% static "icons/fast-forward.png" %}"
+                    alt="go"
+                    class="w-4 h-4 transition group-hover:-rotate-45"
+                    />
+                </a>
+
+            </div>
+
+            {% blocktrans %}
+                Below you can see the tasks and task chains that exist in this project.
+            {% endblocktrans %}
+            {% comment %} CREATE A TASK CHAIN FOR EACH CHAIN{% endcomment %}
+            {% for chain_head in task_list %}
+            <div class="flex my-4">
+                {% component "task_chain" task=chain_head %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% endwith %}
+    {% endif %}
 {% endfor %}
