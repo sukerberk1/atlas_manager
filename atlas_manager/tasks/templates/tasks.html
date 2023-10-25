@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load static %}
+<div class="flex gap-4 flex-col-reverse md:flex-row">
+<div class="grow">
+{% for task_list in project_tasks %}
+    {% if task_list %}
+
+        {% with task_list.0.project as project %}
+
+        <div 
+        class="bg-white rounded-md p-8 shadow-md my-8
+        border-b-4 border-[{{project.get_color_hex}}]"
+        >
+            <div class="flex justify-between items-center">
+                <h1 class="font-bold text-2xl">
+                    {{project.name}}
+                </h1>
+                <a
+                href="/"
+                class="text-sm flex items-center gap-2 group p-4 rounded-md transition hover:bg-sky-50"
+                >
+                    <span class="hidden md:inline group-hover:text-sky-600">
+                        {% blocktrans %}Go to project{% endblocktrans %}
+                    </span>
+                    <img
+                    src="{% static "icons/fast-forward.png" %}"
+                    alt="go"
+                    class="w-4 h-4 transition group-hover:-rotate-45"
+                    />
+                </a>
+
+            </div>
+
+            {% blocktrans %}
+                Your tasks in this project:
+            {% endblocktrans %}
+            {% comment %} CREATE A CHAIN FOR EACH CHAIN HEAD{% endcomment %}
+            {% for chain_head in task_list %}
+            <div class="flex my-8 flex-wrap">
+                {% component "task_chain" task=chain_head %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% endwith %}
+    {% endif %}
+
+    {% empty %}
+
+        {% include "no_results.html" %}
+
+{% endfor %}
+
+</div>
+<div
+id="task-box"
+>
+</div>
+</div>

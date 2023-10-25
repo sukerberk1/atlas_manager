@@ -1,5 +1,5 @@
 from django.db import models
-from clients.models import Client
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -28,9 +28,9 @@ class ProjectColorGroup(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="projects", null=True, blank=True)
     group = models.ForeignKey(ProjectColorGroup, on_delete=models.SET_NULL, related_name="project", null=True, blank=True)
     done = models.BooleanField(default=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_color_hex(self):
         if self.group is None:
@@ -38,6 +38,4 @@ class Project(models.Model):
         return self.group.get_color_hex()
     
     def __str__(self) -> str:
-        if self.client is None:
-            return self.name + " [No client assigned]"
-        return self.name + " " + self.client.first_name + " " + self.client.last_name
+        return self.name + "; Author: " + self.author.username

@@ -1,10 +1,17 @@
 <div
 class="
-block w-6 h-6 rounded-md shadow
+block rounded-md shadow
+{% if size %}
+w-{{size}} h-{{size}}
+{% else %}
+w-6 h-6
+{% endif %}
 bg-[{{group.get_color_hex}}] 
 bg-gradient-to-br from-transparent from-40% to-sky-50
 transition
+{% if hover %}
 hover:-translate-x-px hover:-translate-y-px
+{% endif %}
 "
 hx-get="{% url "get_projects" %}?group={{group.name}}"
 hx-target="#search-results"
