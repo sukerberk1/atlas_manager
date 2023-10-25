@@ -1,0 +1,23 @@
+{% load i18n %}
+<form 
+method="post"
+hx-post="{% url "task_delete" object.id %}"
+hx-target="#container"
+>
+    {% csrf_token %}
+    <div class="flex flex-col items-center">
+    
+    <p class="font-semibold my-2">
+        {% blocktrans %}You will now delete this task.{% endblocktrans %}
+    </p>
+    {{ form }}
+
+    
+        <button 
+        class="p-2 text-lg uppercase rounded-md text-sky-700 tracking-wide transition hover:bg-sky-50 hover:text-sky-600 hover:shadow"
+        >
+            Confirm
+        </button>
+    </div>
+
+</form>

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-<div class="flex gap-4">
+<div class="flex gap-4 flex-col-reverse md:flex-row">
 <div class="grow">
 {% for task_list in project_tasks %}
     {% if task_list %}
@@ -32,11 +32,11 @@
             </div>
 
             {% blocktrans %}
-                Below you can see the tasks and task chains that exist in this project.
+                Your tasks in this project:
             {% endblocktrans %}
-            {% comment %} CREATE A TASK CHAIN FOR EACH CHAIN{% endcomment %}
+            {% comment %} CREATE A CHAIN FOR EACH CHAIN HEAD{% endcomment %}
             {% for chain_head in task_list %}
-            <div class="flex my-8">
+            <div class="flex my-8 flex-wrap">
                 {% component "task_chain" task=chain_head %}
             </div>
             {% endfor %}

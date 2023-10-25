@@ -1,5 +1,6 @@
+{% load static %}
 <div 
-class="p-6 rounded-md bg-white shadow-md grow my-8 basis-40"
+class="p-6 rounded-md bg-white shadow-md grow-[100] my-8 basis-40 max-w-2xl"
 id="task-box"
 >
     <h1 class="text-4xl font-bold">
@@ -10,8 +11,34 @@ id="task-box"
         {% component "project_group_tile" group=task.project.group size=8 %}
         {% endif %}
         <h2 class="text-xl font-semibold">
-            
             {{task.project.name}}
         </h2>
+    </div>
+    <div class="flex justify-space gap-8 mt-8 py-4 justify-evenly mx-8">
+        <a
+        hx-get="{% url "task_delete" task.id %}"
+        hx-target="#alerts"
+        class="rounded-md p-4 transition hover:bg-red-200 hover:shadow"
+        >
+            <img
+            src="{% static "icons/trash-can.png" %}"
+            alt="delete"
+            class="w-8"
+            />
+        </a>
+        <a
+        hx-get="{% url "task_check" task.id %}"
+        hx-target="#alerts"
+        class="rounded-md p-4 transition hover:bg-sky-200 hover:shadow"
+        >
+            <img
+            src="{% static "icons/checked.png" %}"
+            alt="check"
+            class="w-8"
+            />
+        </a>
+    </div>
+    <div id="alerts" class="mt-8">
+
     </div>
 </div>
