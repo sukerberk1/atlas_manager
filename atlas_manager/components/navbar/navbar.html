@@ -16,31 +16,51 @@ class="p-4 bg-white shadow flex flex-row gap-6"
         </h1>
     </div>
     <!-- NAV BOX -->
-    <div
-    {% comment %} 
-    hx-boost="true"
-    hx-push-url="true"
-    {% endcomment %}
-    hx-target="#container"
-    class="flex gap-4 items-center"
-    >
-        <a 
-        class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
-        hx-get="{% url "projects" %}"
+    <div class="grow flex justify-between">
+        <div
+        {% comment %} 
+        hx-boost="true"
+        hx-push-url="true"
+        {% endcomment %}
+        hx-target="#container"
+        class="flex gap-4 items-center"
         >
-            Projects View
-        </a>
-        <a 
-        class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
-        hx-get="/"
-        >
-            Clients View
-        </a>
-        <a 
-        class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
-        hx-get="/"
-        >
-            Tasks View
-        </a>
+            <a 
+            class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
+            hx-get="{% url "projects" %}"
+            >
+                Projects
+            </a>
+            {% comment %} 
+            <a 
+            class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
+            hx-get="/"
+            >
+                Clients View
+            </a> 
+            {% endcomment %}
+            <a 
+            class="p-2 rounded-md hover:text-sky-700 hover:bg-sky-50 cursor-pointer"
+            hx-get="/"
+            >
+                Tasks
+            </a>
+        </div>
+        <div class="flex items-center gap-4">
+
+            {% with user=request.user %}
+                {% component "user_avatar" user=user %}
+            {% endwith %}
+
+            <a
+            href="{% url "account_logout" %}"
+            >
+                <img
+                src="{% static "icons/logout.png" %}"
+                alt="logout"
+                class="w-4 h-4"
+                />
+            </a>
+        </div>
     </div>
 </nav>
