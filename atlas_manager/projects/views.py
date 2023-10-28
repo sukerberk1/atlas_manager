@@ -1,9 +1,11 @@
 from typing import Any
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView, DetailView, DeleteView, FormView
 from .models import Project, ProjectColorGroup
+from tasks.forms import ProjectTaskCreateForm
 
 # Create your views here.
 
@@ -50,3 +52,34 @@ class ProjectDetailView(DetailView):
     model = Project
     template_name = "project-detail.html"
     context_object_name = "project"
+
+
+class ProjectDeleteView(DeleteView):
+    model = Project
+    template_name = "project_delete.html"
+    success_url = reverse_lazy("projects")
+
+
+class AddTaskView(FormView):
+    form_class = ProjectTaskCreateForm
+    template_name = "add_task.html"
+
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["object"] = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+        return context
+    
+    def get_success_url(self) -> str:
+        url = reverse_lazy("tasks")
+        project_param = "?p=" + str(self.kwargs.get("pk"))
+        return url + project_param
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+
+        return super().form_valid(form)
+    

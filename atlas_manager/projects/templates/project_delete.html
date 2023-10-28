@@ -1,0 +1,23 @@
+{% load i18n %}
+<form 
+method="post"
+hx-post="{% url "project_delete" object.id %}"
+hx-target="#container"
+>
+    {% csrf_token %}
+    <div class="flex flex-col items-center">
+    
+    <p class="font-semibold my-2">
+        {% blocktrans %}You will now delete this project. All tasks in this project will be lost.{% endblocktrans %}
+    </p>
+    {{ form }}
+
+    
+        <button 
+        class="p-2 text-lg uppercase rounded-md text-sky-700 tracking-wide transition hover:bg-sky-50 hover:text-sky-600 hover:shadow"
+        >
+            {% blocktrans %}Confirm{% endblocktrans %}
+        </button>
+    </div>
+
+</form>

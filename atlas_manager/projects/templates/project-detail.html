@@ -19,7 +19,7 @@ id="project-manage"
     </p>
     <p>
         <span class="font-semibold">Current tasks:</span>
-        <ul class="flex gap-2">
+        <ul class="flex gap-2 flex-wrap">
             {% for task in project.current_tasks %}
             <li class="px-2 py-1 bg-sky-50 text-sky-700 shadow rounded-md">
                 {{task.title}}
@@ -34,7 +34,7 @@ id="project-manage"
 
     <div class="flex justify-space gap-8 mt-8 py-4 justify-evenly mx-8">
         <a
-        hx-get=""
+        hx-get="{% url "project_add_task" project.id %}"
         hx-target="#alerts"
         class="rounded-md p-4 transition hover:bg-sky-200 hover:shadow"
         >
@@ -45,7 +45,7 @@ id="project-manage"
             />
         </a>
         <a
-        hx-get=""
+        hx-get="{% url "project_delete" project.id %}"
         hx-target="#alerts"
         class="rounded-md p-4 transition hover:bg-red-200 hover:shadow"
         >
