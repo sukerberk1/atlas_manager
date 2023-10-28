@@ -1,7 +1,9 @@
 {% load static %}
 <div class="p-4 bg-white rounded-md shadow-md basis-72 border-b-4 border-[{{p.get_color_hex}}] relative">
     <a 
-    href="/"
+    hx-get="{% url 'project_detail' p.id %}"
+    hx-target="#project-manage"
+    hx-swap="outerHTML show:bottom"
     class="absolute invert-[.45] top-4 right-4 w-4 hover:invert-0 hover:translate-x-0.5 transition"
     >
         <img

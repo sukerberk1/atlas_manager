@@ -1,11 +1,23 @@
-{% component "project_toolbox" %}
 
-<div
-id="search-results"
-class="flex gap-6 wrap"
-hx-get="{% url "get_projects" %}"
-hx-trigger="load"
-hx-target="this"
->
+<div class="flex flex-col-reverse md:flex-row gap-4">
+    <div class="grow basis-3/5">
+
+        {% component "project_toolbox" %}
+
+        <div
+        id="search-results"
+        class="flex gap-6 flex-wrap"
+        hx-get="{% url "get_projects" %}"
+        hx-trigger="load"
+        hx-target="this"
+        >
+        </div>
+
+    </div>
+
+    <div
+    id="project-manage"
+    />
+    </div>
 
 </div>

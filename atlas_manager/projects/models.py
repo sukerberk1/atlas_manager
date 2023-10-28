@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 # Create your models here.
 
@@ -36,6 +37,15 @@ class Project(models.Model):
         if self.group is None:
             return "#ffffff"
         return self.group.get_color_hex()
+    
+    def active_tasks_count(self):
+        return self.tasks.filter(done=False).count()
+    
+    def tasks_count(self):
+        return self.tasks.count()
+    
+    def current_tasks(self):
+        return self.tasks.filter(Q(prev=None, done=False) | Q(prev__done=True))
     
     def __str__(self) -> str:
         return self.name + "; Author: " + self.author.username

@@ -1,0 +1,64 @@
+{% load static %}
+<div 
+class="p-6 rounded-md bg-white shadow-md grow-[99] basis-40 max-w-2xl"
+id="project-manage"
+>
+    <div class="flex gap-2 items-center mb-4">
+        {% if project.group %}
+        {% component "project_group_tile" group=project.group size=8 %}
+        {% endif %}
+        <h1 class="text-4xl font-semibold">
+            {{project.name}}
+        </h1>
+    </div>
+    <p>
+        <span class="font-semibold">Tasks started:</span> {{project.tasks_count}}
+    </p>
+    <p>
+        <span class="font-semibold">Tasks left:</span> {{project.active_tasks_count}}
+    </p>
+    <p>
+        <span class="font-semibold">Current tasks:</span>
+        <ul class="flex gap-2">
+            {% for task in project.current_tasks %}
+            <li class="px-2 py-1 bg-sky-50 text-sky-700 shadow rounded-md">
+                {{task.title}}
+            </li>
+
+            {% empty %}
+            <i>No tasks to display</i>
+            {% endfor %}
+        </ul>
+    </p>
+    
+
+    <div class="flex justify-space gap-8 mt-8 py-4 justify-evenly mx-8">
+        <a
+        hx-get=""
+        hx-target="#alerts"
+        class="rounded-md p-4 transition hover:bg-sky-200 hover:shadow"
+        >
+            <img
+            src="{% static "icons/add.png" %}"
+            alt="check"
+            class="w-8"
+            />
+        </a>
+        <a
+        hx-get=""
+        hx-target="#alerts"
+        class="rounded-md p-4 transition hover:bg-red-200 hover:shadow"
+        >
+            <img
+            src="{% static "icons/trash-can.png" %}"
+            alt="delete"
+            class="w-8"
+            />
+        </a>
+    </div>
+
+    <div id="alerts" class="mt-8">
+
+    </div>
+    
+</div>
